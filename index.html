@@ -1,1 +1,268 @@
-.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fortt Media · Bible Tools</title>
+<link rel="icon" type="image/png" href="/web/bible-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0C0F14;
+  --bg2: #141821;
+  --surface: #1A1F2B;
+  --surface2: #222838;
+  --gold: #C9A84C;
+  --gold-light: #E4CA7A;
+  --gold-dim: #8B7535;
+  --cream: #F2E8D5;
+  --cream2: #D4C4A8;
+  --text: #E8E0D0;
+  --text-dim: #8A8477;
+  --accent: #4A6741;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  min-height:100%;width:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Page ── */
+.page{
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;
+}
+
+/* ── Hero ── */
+.hero{
+  flex-shrink:0;
+  text-align:center;
+  padding:60px 28px 40px;
+  background:
+    radial-gradient(ellipse at 30% 20%,rgba(201,168,76,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse at 70% 80%,rgba(74,103,65,0.04) 0%,transparent 60%),
+    var(--bg);
+}
+.hero-brand{
+  font-family:'DM Sans',sans-serif;
+  font-size:10px;letter-spacing:0.35em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:600;
+  margin-bottom:16px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,8vw,56px);font-weight:300;
+  color:var(--cream);letter-spacing:0.03em;
+  line-height:1.12;margin-bottom:16px;
+  animation:fadeUp 0.7s ease both;
+}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-sub{
+  font-size:14px;color:var(--cream2);
+  line-height:1.6;max-width:420px;
+  margin:0 auto;
+  animation:fadeUp 0.7s ease 0.1s both;
+}
+
+/* ── Divider ── */
+.gold-rule{
+  width:40px;height:1px;background:var(--gold-dim);
+  margin:0 auto;opacity:0.5;
+}
+
+/* ── Tools Grid ── */
+.tools-section{
+  flex:1;
+  padding:40px 24px 60px;
+  max-width:720px;
+  margin:0 auto;width:100%;
+}
+.tools-label{
+  font-family:'DM Sans',sans-serif;
+  font-size:10px;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:600;
+  text-align:center;margin-bottom:28px;
+}
+.tools-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  animation:fadeUp 0.7s ease 0.2s both;
+}
+.tool-card{
+  background:var(--surface);
+  border:1px solid rgba(201,168,76,0.1);
+  border-radius:16px;
+  padding:28px 22px;
+  text-decoration:none;
+  color:inherit;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.tool-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(201,168,76,0.06),transparent 70%);
+  opacity:0;transition:opacity 0.3s;
+}
+.tool-card:hover{
+  border-color:rgba(201,168,76,0.3);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 20px rgba(201,168,76,0.05);
+}
+.tool-card:hover::before{opacity:1}
+
+.tool-icon{
+  font-size:28px;margin-bottom:16px;
+  position:relative;z-index:1;
+}
+.tool-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:500;
+  color:var(--cream);
+  margin-bottom:8px;
+  position:relative;z-index:1;
+  line-height:1.2;
+}
+.tool-desc{
+  font-size:12px;color:var(--text-dim);
+  line-height:1.5;
+  position:relative;z-index:1;
+  flex:1;
+}
+.tool-tag{
+  display:inline-block;
+  margin-top:14px;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:9px;letter-spacing:0.12em;text-transform:uppercase;
+  font-weight:600;
+  position:relative;z-index:1;
+}
+.tag-app{background:rgba(74,103,65,0.2);color:#7BA36E}
+.tag-daily{background:rgba(201,168,76,0.12);color:var(--gold)}
+.tag-reference{background:rgba(107,58,58,0.2);color:#B07070}
+
+/* ── Featured Card (spans full width) ── */
+.tool-card.featured{
+  grid-column:1/-1;
+  flex-direction:row;
+  align-items:center;
+  gap:24px;
+  padding:32px 28px;
+}
+.tool-card.featured .tool-icon{
+  font-size:36px;margin-bottom:0;flex-shrink:0;
+}
+.tool-card.featured .tool-info{flex:1}
+.tool-card.featured .tool-name{font-size:26px}
+.tool-card.featured .tool-desc{font-size:13px}
+.tool-card.featured .tool-arrow{
+  font-size:20px;color:var(--gold-dim);
+  flex-shrink:0;
+  transition:transform 0.3s,color 0.3s;
+}
+.tool-card.featured:hover .tool-arrow{
+  transform:translateX(4px);color:var(--gold);
+}
+
+/* ── Footer ── */
+.footer{
+  padding:20px;
+  border-top:1px solid rgba(201,168,76,0.06);
+  text-align:center;
+  font-size:10px;color:var(--text-dim);letter-spacing:0.06em;
+}
+.footer a{color:var(--gold-dim);text-decoration:none}
+.footer a:hover{color:var(--gold)}
+
+/* ── Animations ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Mobile ── */
+@media(max-width:540px){
+  .hero{padding:44px 20px 32px}
+  .tools-grid{grid-template-columns:1fr}
+  .tool-card.featured{flex-direction:column;text-align:center}
+  .tool-card.featured .tool-arrow{display:none}
+  .tools-section{padding:32px 18px 48px}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-brand">Fortt Media</div>
+    <h1 class="hero-title">Bible <em>Tools</em></h1>
+    <p class="hero-sub">Free tools for reading, studying, and exploring Scripture &mdash; built with care for depth, accuracy, and beauty.</p>
+  </div>
+
+  <div class="gold-rule"></div>
+
+  <div class="tools-section">
+    <div class="tools-label">Explore</div>
+
+    <div class="tools-grid">
+
+      <!-- Featured: Today's Bible Character -->
+      <a class="tool-card featured" href="/web/today.html">
+        <div class="tool-icon">&#128715;</div>
+        <div class="tool-info">
+          <div class="tool-name">Today&rsquo;s Bible Character</div>
+          <div class="tool-desc">A daily riddle drawn from the people of Scripture, guided by the liturgical calendar. Guess the character, then reveal their story.</div>
+          <span class="tool-tag tag-daily">Daily</span>
+        </div>
+        <div class="tool-arrow">&rarr;</div>
+      </a>
+
+      <!-- Study Bible -->
+      <a class="tool-card" href="/web/">
+        <div class="tool-icon">&#128214;</div>
+        <div class="tool-name">Study Bible</div>
+        <div class="tool-desc">The World English Bible with glossary, Hebrew &amp; Greek tools, major passage markers, and Matthew Henry&rsquo;s Commentary.</div>
+        <span class="tool-tag tag-app">App</span>
+      </a>
+
+      <!-- Bible Glossary -->
+      <a class="tool-card" href="/glossary-app/">
+        <div class="tool-icon">&#128218;</div>
+        <div class="tool-name">Bible Glossary</div>
+        <div class="tool-desc">2,700+ entries covering people, places, doctrine, terms, and groups &mdash; with cross-references and relationships.</div>
+        <span class="tool-tag tag-reference">Reference</span>
+      </a>
+
+      <!-- Bible Names -->
+      <a class="tool-card" href="/bible-names/">
+        <div class="tool-icon">&#10022;</div>
+        <div class="tool-name">Bible Names</div>
+        <div class="tool-desc">Discover meanings, origins, and stories behind 1,200+ biblical names. Browse by popularity or search by name.</div>
+        <span class="tool-tag tag-reference">Reference</span>
+      </a>
+
+      <!-- Subscribe -->
+      <a class="tool-card" href="/web/subscribe.html">
+        <div class="tool-icon">&#9993;</div>
+        <div class="tool-name">Stay Connected</div>
+        <div class="tool-desc">Get occasional updates about free Bible resources and new tools from Fortt Media.</div>
+        <span class="tool-tag tag-daily">Free</span>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Fortt Media &middot; All tools free and open
+  </div>
+</div>
+
+</body>
+</html>
