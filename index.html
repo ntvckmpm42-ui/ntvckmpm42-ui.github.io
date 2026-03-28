@@ -121,6 +121,10 @@ html,body{
   font-size:28px;margin-bottom:16px;
   position:relative;z-index:1;
 }
+.tool-icon img{
+  width:48px;height:48px;border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
 .tool-name{
   font-family:'Cormorant Garamond',serif;
   font-size:22px;font-weight:500;
@@ -158,6 +162,9 @@ html,body{
 }
 .tool-card.featured .tool-icon{
   font-size:36px;margin-bottom:0;flex-shrink:0;
+}
+.tool-card.featured .tool-icon img{
+  width:56px;height:56px;border-radius:12px;
 }
 .tool-card.featured .tool-info{flex:1}
 .tool-card.featured .tool-name{font-size:26px}
@@ -215,7 +222,7 @@ html,body{
 
       <!-- Featured: Today's Bible Character -->
       <a class="tool-card featured" href="/web/today.html">
-        <div class="tool-icon">&#128715;</div>
+        <div class="tool-icon"><img src="/web/today-icon-192.png" alt=""></div>
         <div class="tool-info">
           <div class="tool-name">Today&rsquo;s Bible Character</div>
           <div class="tool-desc">A daily riddle drawn from the people of Scripture, guided by the liturgical calendar. Guess the character, then reveal their story.</div>
@@ -226,7 +233,7 @@ html,body{
 
       <!-- Study Bible -->
       <a class="tool-card" href="/web/">
-        <div class="tool-icon">&#128214;</div>
+        <div class="tool-icon"><img src="/web/bible-icon-192.png" alt=""></div>
         <div class="tool-name">Study Bible</div>
         <div class="tool-desc">The World English Bible with glossary, Hebrew &amp; Greek tools, major passage markers, and Matthew Henry&rsquo;s Commentary.</div>
         <span class="tool-tag tag-app">App</span>
@@ -234,7 +241,7 @@ html,body{
 
       <!-- Bible Glossary -->
       <a class="tool-card" href="/glossary-app/">
-        <div class="tool-icon">&#128218;</div>
+        <div class="tool-icon"><img src="/glossary-app/glossary-icon-192.png" alt=""></div>
         <div class="tool-name">Bible Glossary</div>
         <div class="tool-desc">2,700+ entries covering people, places, doctrine, terms, and groups &mdash; with cross-references and relationships.</div>
         <span class="tool-tag tag-reference">Reference</span>
@@ -242,7 +249,7 @@ html,body{
 
       <!-- Bible Names -->
       <a class="tool-card" href="/bible-names/">
-        <div class="tool-icon">&#10022;</div>
+        <div class="tool-icon"><img src="/bible-names/names-icon-192.png" alt=""></div>
         <div class="tool-name">Bible Names</div>
         <div class="tool-desc">Discover meanings, origins, and stories behind 1,200+ biblical names. Browse by popularity or search by name.</div>
         <span class="tool-tag tag-reference">Reference</span>
