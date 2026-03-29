@@ -95,6 +95,31 @@ All projects share:
 
 `a.fortt.com` is configured via CNAME to `ntvckmpm42-ui.github.io`. All repos are accessible at `a.fortt.com/{repo-name}/`.
 
+## Cross-App Navigation
+
+All apps link to the Study Bible for verse references. Links include a `?from=` parameter that triggers a floating back button in the Study Bible:
+
+| Source App | Parameter | Back Button |
+|---|---|---|
+| Today's Bible Character | `?from=today` | ← Back to Today's Bible Character |
+| Bible Names | `?from=names` | ← Back to Bible Names |
+| Bible Glossary | `?from=glossary` | ← Back to Bible Glossary |
+
+This solves the iOS PWA limitation where standalone mode opens links in the same window with no browser back button. All external links use `window.open()` for new-tab behavior on desktop/Android browsers.
+
+## PWA Support
+
+All four apps are installable as PWAs with manifest, service worker, and install banners:
+
+| App | Manifest | Service Worker | Cache |
+|---|---|---|---|
+| Study Bible | `manifest.json` | `sw.js` (v5) | Full app + DB |
+| Today's Bible Character | `today-manifest.json` | `today-sw.js` (v3, scoped to today files) | App + icons |
+| Bible Names | `names-manifest.json` | `names-sw.js` (v1) | App + icons |
+| Bible Glossary | *(no PWA wrapper yet)* | — | — |
+
+The Today's Bible Character service worker is scoped to only cache `today*` and `subscribe*` files, allowing Study Bible requests to pass through to the network or the Study Bible's own service worker.
+
 ---
 
 ## Credits
